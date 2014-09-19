@@ -1,0 +1,158 @@
+<!-- style -->
+<style>
+.cform1.ng-invalid {
+   background: red;
+ }
+
+ .cform1.ng-invalid {
+   background: blue;
+ }
+
+</style>
+ <!-- Form Title  -->
+
+
+<!-- Form Title  -->
+<div> 
+  <font size="7" face="Palatino Linotype, Book Antiqua, Palatino, serif">  
+      &nbsp; &nbsp; Form to Register <br /> 
+  </font> 
+</div>
+
+  <!-- Form content-->
+<div align= "center">     
+<form name="form1" ng-controller="FormController" class="cfomr1"> 
+  <table width="502" border="0" cellpadding="3">  <!-- Using table to have a rigid width-->
+      <td width="142">Name</td>    <!-- width for the first column -->
+      <td width="631">             <!-- width for the second column -->
+        <div class="form-group" ng-class="{'has-error': form1.Fname.$invalid, 'has-success': form1.Fname.$valid}"> 
+            <label for="inputFname"></label>
+            <input id="inputFname" name="Fname" type="text" maxlength="15" class="form-control" placeholder="Name" ng-model="user.name" required/>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Surname</td>
+      <td>
+       <div class="form-group" ng-class="{'has-error': form1.Fsurname.$invalid, 'has-success': form1.Fsurname.$valid}">
+          <label for="inputFsurname"></label>
+          <input id="inputFsurname" name="Fsurname" type="text" maxlength="20" class="form-control" placeholder="Surname" ng-model="user.surname" required/>
+       </div>
+     </td>
+    </tr>
+    <tr>
+      <td>User Name</td>
+      <td>
+         <div class="form-group" ng-class="{'has-error': form1.Fusername.$invalid, 'has-success': form1.Fusername.$valid}">
+            <label for="inputFusername"></label>
+            <input type="text" id="inputFusername" name="Fusername" class="form-control" placeholder="Username" ng-model="user.username" required/>
+         </div>
+      </td>
+    </tr>
+
+          <td>Password</td>
+      <td>
+        <div class="form-group" ng-class="{'has-error': form1.Fpassw.$invalid, 'has-success': form1.Fpassw.$valid}">
+          <label for="inputFpassw"></label>
+          <input type="password" id="inputFpassw" name="Fpassw" class="form-control" placeholder="Password" ng-model="user.passwd" required/>
+        </div>
+      </td>
+    </tr>
+     <tr>
+      <td>Rewrite the Password</td>
+      <td>
+        <div class="form-group" ng-class="{'has-error': form1.Fpssw2.$invalid, 'has-success': form1.Fpssw2.$valid}">
+           <label for="inputFpssw2"></label>
+           <input type="password" id="inputFpssw2" name="Fpssw2" class="form-control" placeholder="Rewrite your Password" ng-model="FormCtrl.user.passwd2" required/>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td>
+        <div class="form-group" ng-class="{'has-error': form1.Fcity.$invalid, 'has-success': form1.Fcity.$valid}">
+        <label for="inputFcity"></label>
+        <select name="Fcity" id="inputFcity" class="form-control" placeholder="City" ng-model="user.city" required>
+          <option>EEUU</option>
+          <option selected="selected">España</option>
+          <option>México</option>
+          <option>La Gallicy</option>
+          <option>Italia</option>
+          <option>Magyar</option>
+          <option>Deutchland</option>
+          <option>United Kingdom</option>
+          <option>Chile</option>
+          <option>Argentina</option>
+          <option>Brasil</option>
+          <option>Österreich</option>
+          <option>Switzerland</option>
+          <option>Luxemburg</option>
+        </select>
+              </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>
+        <div class="form-group" ng-class="{'has-error': form1.Fphone.$invalid, 'has-success': form1.Fphone.$valid}">
+          <label for="inputFphone"></label>
+          <input id="inputFphone" type="tel" name="Fphone" class="form-control" placeholder="Phone" ng-model="user.phone" required/>
+        </div>
+       </td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td> 
+        <div class="form-group" ng-class="{'has-error': form1.Femail.$invalid, 'has-success': form1.Femail.$valid}"> 
+          <label for="inputFemail"></label>
+          <input type="email" id="inputFemail" name="Femail" class="form-control" placeholder="Email" ng-model="user.email" required/>
+          <div ng-show="form1.Femail.$dirty && form1.Femail.$invalid"> Invalid: 
+                <span ng-show="form1.Femail.$error.required">Tell us your email.</span>
+                <span ng-show="form1.Femail.$error.email">This is not a valid email.</span>
+          </div>
+        </div>
+     </td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><label for="inputgender"></label>
+        <input name="Fgender" id="inputgender" type="radio" ng-model="user.gender" value="male"  checked="checked"/>male
+        <input name="Fgender" id="inputgender" type="radio" ng-model="user.gender" value="female" />female
+     </td>
+    </tr>
+     <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td> </td>
+     <td> <input type="checkbox" ng-model="user.agree" name="userAgree" required/>
+     I agree 
+      <div ng-show="!user.agree">Please agree.</div>
+    </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button class="btn btn-lg btn-primary" ng-click="update(user)" ng-disabled="form1.$invalid || isUnchanged(user)">Register</button> &nbsp; &nbsp;
+         <a href="index.html#/register" target="_self"> <button class="btn btn-lg btn-primary" ng-click="reset()" ng-disabled="isUnchanged(user)">Cancel</button></a></td>   
+    </tr>
+     <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+     <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  </form>
+</div>
